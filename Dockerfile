@@ -29,4 +29,7 @@ FROM adoptopenjdk/openjdk8:ubi-jre
 RUN mkdir /opt/app
 COPY --from=builder /app/target/inventory-0.0.1-SNAPSHOT.jar /opt/app/app.jar
 
+# Create mongo directory
+RUN mkdir /opt/app/.embedmongo
+
 ENTRYPOINT [ "sh", "-c", "java -jar /opt/app/app.jar" ]
